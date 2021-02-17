@@ -90,7 +90,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ## What does the Solution do
 There are two components involved.
-- `Terraform` Tool - which creates the *infrastructure* such as VNet, subnets, required number of CitrixADCs (nodes)
+- `Terraform` Tool - which creates the *infrastructure* such as Resource Group, VNet, subnets, required number of CitrixADCs (nodes)
 - `cluster.py` script which helps in managing (add/update/delete) the cluster nodes. 
 
 ### Role of Terraform tool
