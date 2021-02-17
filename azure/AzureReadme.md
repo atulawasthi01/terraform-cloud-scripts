@@ -8,7 +8,7 @@
 - [Topology](#topology)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
 - [Assumptions](#assumptions)
-- [What does the Solution do](#what-does-the-Solution-do)
+- [What does the Solution do](#what-does-the-solution-do)
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
   * [Role of `get_num_nodes.sh` script](#role-of-get_num_nodessh-script)
@@ -88,7 +88,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 2. All added nodes will go to `state=ACTIVE` by default
 3. Addition of nodes will take place **serially**
 
-## What does the Solution do -
+## What does the Solution do
 There are two components involved.
 - `Terraform` Tool - which creates the *infrastructure* such as VNet, subnets, required number of CitrixADCs (nodes)
 - `cluster.py` script which helps in managing (add/update/delete) the cluster nodes. 
