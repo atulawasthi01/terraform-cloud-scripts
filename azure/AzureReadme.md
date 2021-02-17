@@ -35,9 +35,9 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 2. `getCCOId.sh` - It gets the current number of nodes present in the cluster. <br>
     EX- ./getCCOId.sh prefix(defined in input.auto.tfvars)
     
-## Authentication-options
-- For logging into the azure cloud two options are there:
-  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file 
+## Authentication options
+- For logging into the azure cloud two options have been provided in the script:
+  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file and then uncomment the provider block with logging credentials
   * The other option is to authenticate via azure CLI. Run the following command and then follow along to get signed in <br>
     az login
     
