@@ -97,3 +97,15 @@ There are two components involved.
 
 ### Role of `cluster.py` script
 - Depending on the arguments, this script adds/updates/deletes the required number of nodes to/from the cluster.
+
+### Role of `change_state.sh` script
+- Provides automation for shutting down or starting all the instances in a resource group.
+- To leave instance/s in the resource group unaffected by the script provide their names as optional args to the script separated by spaces
+- To run the script
+- ./change_stat.sh resource-group-name stop/start [optional args]
+
+### Role of `getCCOId.sh` script
+- Returns the total number of nodes in the cluster
+- To run the script - 
+- ./getCCOId.sh prefix
+- Here prefix the variable defined in input.auto.tfvars file
