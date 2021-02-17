@@ -101,7 +101,7 @@ There are two components involved.
 ### Role of `change_state.sh` script
 - Provides automation for shutting down or starting all the instances in a resource group.
 - To leave instance/s in the resource group unaffected by the script provide their names as optional args to the script separated by spaces
-- To run the script
+- To run the script - <br>
  ./change_stat.sh resource-group-name stop/start [optional args]
 
 ### Role of `getCCOId.sh` script
