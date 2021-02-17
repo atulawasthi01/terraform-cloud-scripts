@@ -60,7 +60,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 // Other variables used in code
 
-**`prefix`**                          = "a1"
+**`prefix`**                          = ""
 
 **`location`**                        = "West US 2"
 
