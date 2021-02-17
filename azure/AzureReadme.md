@@ -38,15 +38,15 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ## Input File `input.auto.tfvars`
 
-# logging credentials
+// logging credentials
 
-# tenant_id                       = ""
+// **`tenant_id`**                       = ""
 
-# subscription_id                 = ""
+// **`subscription_id`**                 = ""
 
-# client_id                       = ""
+// **`client_id`**                       = ""
 
-# client_secret                   = ""
+// **`client_secret`**                   = ""
 
 # Other variables used in code
 **`prefix`**                          = "a1"
