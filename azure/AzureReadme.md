@@ -66,11 +66,11 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 **`vpc_cidr_block`**                  = "10.0.0.0/16"
 
-**`management_subnet_cidr_block`**    = "10.0.1.0/24"
+**`management_subnet_address_space`**    = "10.0.1.0/24"
 
-**`client_subnet_cidr_block`**        = "10.0.2.0/24"
+**`client_subnet_address_space`**        = "10.0.2.0/24"
 
-**`server_subnet_cidr_block`**        = "10.0.3.0/24"
+**`server_subnet_address_space`**        = "10.0.3.0/24"
 
 **`nodes_password`**                  = ""
 
