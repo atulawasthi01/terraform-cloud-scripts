@@ -44,7 +44,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
     az login
     
 ## Topology
-![Image of Cluster Topology](cluster-topology1.png)
+![Image of Cluster Topology](cluster-topology2.png)
 
 ## Input File `input.auto.tfvars`
 
