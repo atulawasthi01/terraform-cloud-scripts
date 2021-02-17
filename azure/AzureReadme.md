@@ -4,15 +4,14 @@
   * [Terraform related files](#terraform-related-files)
   * [Python script related files](#python-script-related-files)
   * [Shell script related files](#shell-script-related-files)
-- [Topology](#topology)
 - [Authentication options](#Authentication-options)
+- [Topology](#topology)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
 - [Assumptions](#assumptions)
 - [What does the Solution do](#what-does-the-solution-do)
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
-  * [Role of `change_state.sh` script](#role-of-change_statesh-script)
-  * [Role of `getCCOId.sh` script](#role-of-getCCOIdsh-script)
+  * [Role of `get_num_nodes.sh` script](#role-of-get_num_nodessh-script)
 
 The below documentation provides an overview on the provisioning of Citrix ADC clustering using Terraform tool
 
