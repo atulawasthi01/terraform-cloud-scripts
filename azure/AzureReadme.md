@@ -17,7 +17,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ## Pre-requisities
 1. Terraform v.12.0+
-2. Azure CLI for log in if role contributor or below
+2. Azure CLI if not using service principle
 3. python3
 
 
