@@ -32,16 +32,15 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 1. `cluster.py` - used to create and manage cluster. This file will be internally called by Terraform
 
 ### Shell script related files
-1. `change_state.sh` – to start or stop instances in a resource group <br>
-    Ex- ./change_state.sh resource_group_name start/stop [optional args name of instances, space separated, to leave unaffected by the script]
-2. `getCCOId.sh` - It gets the current number of nodes present in the cluster. <br>
+1. `getCCOId.sh` - It gets the current number of nodes present in the cluster. <br>
     EX- ./getCCOId.sh prefix(defined in input.auto.tfvars)
     
 ## Authentication options
 - For logging into the azure cloud two options have been provided in the script:
-  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file and then uncomment the provider block with logging credentials
-  * The other option is to authenticate via azure CLI. Run the following command and then follow along to sign in: <br>
+  * The easy way is to authenticate via azure CLI. Run the following command and then follow along to sign into azure: <br>
     az login
+    Once logged in, terraform can deploy resources using that account.
+  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file.
     
 ## Topology
 ![Image of Cluster Topology](cluster-topology2.png)
@@ -91,30 +90,31 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ## What does the Solution do -
 There are two components involved.
-- `Terraform` Tool - which creates the *infrastructure* such as VPC, subnets, required number of CitrixADCs (nodes)
-- `cluster.py` script which helps in managing (add/update/delete) the cluster nodes
+- `Terraform` Tool - which creates the *infrastructure* such as VNet, subnets, required number of CitrixADCs (nodes)
+- `cluster.py` script which helps in managing (add/update/delete) the cluster nodes. 
 
 ### Role of Terraform tool
-- Creates a VPC - `Terraform VPC`
+- Creates a Resource Group - `Terraform Resource Group`
+- Creates a VNet - `Terraform VNet`
 - Creates 3 subnets - `management`, `client`, `server`
 - Creates a security group for ubuntu to allow end users access to it possible through ssh.
 - Creates ubuntu - `test_ubuntu` - used kind of jumpBox to run `cluster.py` script
 - 1 Public IP - for `test_ubuntu`'s client-side
 - 3 NICs for each CitrixADC - `management`, `server`, `client`
 - 3 NICs for test_ubuntu - `ubuntu_client`, `ubuntu_management`, `ubuntu_server`
-> Terraform copies `cluster.py` to `test_ubuntu` (acts as jumpBox) and executes it remotely, by passing required arguments.
+- Creates a Load Balancer - `Terraform Load Balancer with following components`
+  * Frontend ip which is used as clip
+  * Backend pool containing mangement ips of all citrix adc nodes in the cluster
+  * Clip probe sent on 9000 tcp port to which only cco node in the cluster replies.
+  * Load balancong rule to specify what traffic to allow and how is it distributed as in the source and destination port mapping.
+> Terraform copies `cluster.py` to `ubuntu` (acts as jumpBox) and executes it remotely, by passing required arguments.
 
 ### Role of `cluster.py` script
 - Depending on the arguments, this script adds/updates/deletes the required number of nodes to/from the cluster.
+-  It configures citrix adc nodes to form a cluster using Nitro API calls.
 
-### Role of `change_state.sh` script
-- Provides automation for shutting down or starting all the instances in a resource group.
-- To leave instance/s in the resource group unaffected by the script provide their names as optional args to the script separated by space.
-- To run the script - <br>
- ./change_stat.sh resource-group-name stop/start [optional args]
-
-### Role of `getCCOId.sh` script
+### Role of `get_num_nodes.sh` script
 - Returns the total number of nodes in the cluster.
 - To run the script - <br> 
- ./getCCOId.sh prefix
+ ./get_num_nodes.sh prefix
 - Here prefix is the variable defined in input.auto.tfvars file.
