@@ -106,6 +106,6 @@ There are two components involved.
 
 ### Role of `getCCOId.sh` script
 - Returns the total number of nodes in the cluster
-- To run the script - 
+- To run the script - <br> 
  ./getCCOId.sh prefix
 - Here prefix the variable defined in input.auto.tfvars file
