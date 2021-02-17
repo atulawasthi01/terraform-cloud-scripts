@@ -8,7 +8,7 @@
 - [Topology](#topology)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
 - [Assumptions](#assumptions)
-- [What does the Solution do](#what-does-the-solution-do)
+- [What does the Solution do](#what-does-the-Solution-do)
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
   * [Role of `get_num_nodes.sh` script](#role-of-get_num_nodessh-script)
