@@ -5,18 +5,16 @@
   * [Python script related files](#python-script-related-files)
 - [Topology](#topology)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
-  * [Possible values for `ns_instance_type`](#possible-values-for-ns_instance_type)
 - [Assumptions](#assumptions)
 - [What does the Solution do](#what-does-the-solution-do)
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
-  * [Role of `getCCOId.py` script](#role-of-getccoidpy-script)
 
 The below documentation provides an overview on the provisioning of Citrix ADC clustering using Terraform tool
 
 ## Pre-requisities
 1. Terraform v.12.0+
-2. Space for **two** EIPs in the aws_region
+2. Azure CLI for log in if role contributor or below
 3. python3
 
 
@@ -80,25 +78,6 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 **`cluster_tunnel`**  =  "GRE"
 
 
-### Possible values for `ns_instance_type`
-- t2.medium
-- t2.large
-- t2.xlarge
-- t2.2xlarge
-- m3.large
-- m3.xlarge
-- m3.2xlarge
-- m4.large
-- m4.xlarge
-- m4.2xlarge
-- m4.4xlarge
-- m4.10xlarge
-- c4.large
-- c4.xlarge
-- c4.2xlarge
-- c4.4xlarge
-- c4.8xlarge
-
 ## Assumptions
 1. The automation handles only 1 cluster for now
 2. All added nodes will go to `state=ACTIVE` by default
@@ -108,27 +87,17 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 There are two components involved.
 - `Terraform` Tool - which creates the *infrastructure* such as VPC, subnets, required number of CitrixADCs (nodes)
 - `cluster.py` script which helps in managing (add/update/delete) the cluster nodes
-- `getCCOId.py` script gets the latest Cluster Coordinator Node ID. It also gets the current number of nodes present in the cluster.
-> The output of `getCCOId.py` script will be the input for any `day2+` related changes to the cluster.
 
 ### Role of Terraform tool
 - Creates a VPC - `Terraform VPC`
 - Creates 3 subnets - `management`, `client`, `server`
-- Creates 2 security groups - `inside_allow_all`, `outside_world`
-- Creates Internet-Gateway - `TR_iGW`
-- Creates routing tables - `client_rtb`, `management_rtb`
-- Cretees NAT Gatway - `nat_gw`
+- Creates a security group for ubuntu to allow end users access to it possible through ssh.
 - Creates ubuntu - `test_ubuntu` - used kind of jumpBox to run `cluster.py` script
-- 2 EIPs - one for `test_ubuntu`'s client-side; another for `NAT-GW`
+- 1 Public IP - for `test_ubuntu`'s client-side
 - Role - `citrix_adc_cluster_role`
-- 3 ENIs for each CitrixADC - `management`, `server`, `client`
-- 2 ENIs for test_ubuntu - `ubuntu_client`, `ubuntu_management`
+- 3 NICs for each CitrixADC - `management`, `server`, `client`
+- 3 NICs for test_ubuntu - `ubuntu_client`, `ubuntu_management`, `ubuntu_server`
 > Terraform copies `cluster.py` to `test_ubuntu` (acts as jumpBox) and executes it remotely, by passing required arguments.
 
 ### Role of `cluster.py` script
 - Depending on the arguments, this script adds/updates/deletes the required number of nodes to/from the cluster.
-
-### Role of `getCCOId.py` script
-- To run any `Day2+` related changes to cluster, the user require two inputs to `Terraform`.
-  1. `cco_id` - The latest Config Coordinator Node ID.
-  2. `initial_num_nodes` - The updated number of nodes the user wants to have in the cluster.
