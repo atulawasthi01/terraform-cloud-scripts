@@ -40,7 +40,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 ## Authentication options
 - For logging into the azure cloud two options have been provided in the script:
   * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file and then uncomment the provider block with logging credentials
-  * The other option is to authenticate via azure CLI. Run the following command and then follow along to get signed in <br>
+  * The other option is to authenticate via azure CLI. Run the following command and then follow along to sign in: <br>
     az login
     
 ## Topology
