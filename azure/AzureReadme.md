@@ -117,4 +117,4 @@ There are two components involved.
 - Returns the total number of nodes in the cluster.
 - To run the script - <br> 
  ./getCCOId.sh prefix
-- Here prefix the variable defined in input.auto.tfvars file.
+- Here prefix is the variable defined in input.auto.tfvars file.
