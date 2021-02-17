@@ -10,6 +10,8 @@
 - [What does the Solution do](#what-does-the-solution-do)
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
+  * [Role of `change_state.sh` script](#role-of-change_statesh-script)
+  * [Role of `getCCOId.sh` script](#role-of-getCCOIdsh-script)
 
 The below documentation provides an overview on the provisioning of Citrix ADC clustering using Terraform tool
 
