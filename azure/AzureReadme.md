@@ -48,7 +48,8 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 // **`client_secret`**                   = ""
 
-# Other variables used in code
+// Other variables used in code
+
 **`prefix`**                          = "a1"
 
 **`location`**                        = "West US 2"
