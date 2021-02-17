@@ -109,12 +109,12 @@ There are two components involved.
 
 ### Role of `change_state.sh` script
 - Provides automation for shutting down or starting all the instances in a resource group.
-- To leave instance/s in the resource group unaffected by the script provide their names as optional args to the script separated by spaces
+- To leave instance/s in the resource group unaffected by the script provide their names as optional args to the script separated by space.
 - To run the script - <br>
  ./change_stat.sh resource-group-name stop/start [optional args]
 
 ### Role of `getCCOId.sh` script
-- Returns the total number of nodes in the cluster
+- Returns the total number of nodes in the cluster.
 - To run the script - <br> 
  ./getCCOId.sh prefix
-- Here prefix the variable defined in input.auto.tfvars file
+- Here prefix the variable defined in input.auto.tfvars file.
