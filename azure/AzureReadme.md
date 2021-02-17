@@ -4,7 +4,7 @@
   * [Terraform related files](#terraform-related-files)
   * [Python script related files](#python-script-related-files)
 - [Topology](#topology)
-- [Authentication options](# Authentication-options)
+- [Authentication options](#Authentication-options)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
 - [Assumptions](#assumptions)
 - [What does the Solution do](#what-does-the-solution-do)
