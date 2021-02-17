@@ -27,55 +27,50 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ### Python script related files
 1. `cluster.py` - used to create and manage cluster. This file will be internally called by Terraform
-2. `getCCOId.py` - used to get the latest Cluster Coordinator Node ID. It also gets the current number of nodes present in the cluster.
-> **Always run `getCCOId.py` script to `refresh terraform`, before modifying cluster.**
+
+### Shell script related files
+1. `change_state.sh` – to start or stop instances in a resource group
+    Ex- ./change_state.sh resource_group_name start/stop [optional args name of instances, space separated, to leave unaffected by the script]
+2. `getCCOId.sh` - It gets the current number of nodes present in the cluster.
+    EX- ./getCCOId.sh prefix(defined in input.auto.tfvars)
 ## Topology
 ![Image of Cluster Topology](cluster-topology.jpg)
 
 ## Input File `input.auto.tfvars`
-// aws authentication
 
-**`aws_access_key`**  =  ""
+# logging credentials
 
-**`aws_secret_key`**  =  ""
+# tenant_id                       = ""
 
-**`ssh_pub_key`**  =  "" // The public key material. Eg., contents of `~/.ssh/id_rsa.pub` file
+# subscription_id                 = ""
 
-**`private_key_path`** = "~/.ssh/id_rsa"  // path of the private key
+# client_id                       = ""
 
-// aws region related inputs
+# client_secret                   = ""
 
-**`aws_region`**  =  "" // default: "us-east-1"
+# Other variables used in code
+**`prefix`**                          = "a1"
 
-**`aws_availability_zone`**  =  "" // default: "us-east-1a"
+**`location`**                        = "West US 2"
 
-// VPC related inputs
+**`vpc_cidr_block`**                  = "10.0.0.0/16"
 
-**`vpc_cidr_block`**  =  "10.0.0.0/16"
+**`management_subnet_cidr_block`**    = "10.0.1.0/24"
 
-**`management_subnet_cidr_block`**  =  "10.0.1.0/24"
+**`client_subnet_cidr_block`**        = "10.0.2.0/24"
 
-**`client_subnet_cidr_block`**  =  "10.0.2.0/24"
+**`server_subnet_cidr_block`**        = "10.0.3.0/24"
 
-**`server_subnet_cidr_block`**  =  "10.0.3.0/24"
+**`nodes_password`**                  = ""
 
-// CitrixADC (node) related inputs
+**`cluster_tunnelmode`**              = "UDP"
 
-**`ns_instance_type`**  =  "c4.8xlarge" //default: "m4.xlarge" -- [Possible values for `ns_instance_type`](#possible-values-for-ns_instance_type)
+**`cluster_backplane`**               = "0/1"
 
-**`ns_tenancy_model`**  =  "default"  # defalut | dedicated
+**`private_key_path`**                = "~/.ssh/id_rsa"
 
-**`nodes_password`**  =  "" #default: "nsroot"
+**`public_key_path`**                 = "~/.ssh/id_rsa.pub"
 
-**`key_pair_name`**  =  ""
-
-// Cluster related inputs
-
-**`initial_num_nodes`** =  1  # Max is 32
-
-**`cluster_backplane`**  =  "1/1"
-
-**`cluster_tunnel`**  =  "GRE"
 
 
 ## Assumptions
