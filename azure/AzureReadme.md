@@ -4,6 +4,7 @@
   * [Terraform related files](#terraform-related-files)
   * [Python script related files](#python-script-related-files)
 - [Topology](#topology)
+- [Authentication options](# Authentication-options)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
 - [Assumptions](#assumptions)
 - [What does the Solution do](#what-does-the-solution-do)
@@ -29,16 +30,23 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 1. `cluster.py` - used to create and manage cluster. This file will be internally called by Terraform
 
 ### Shell script related files
-1. `change_state.sh` – to start or stop instances in a resource group
+1. `change_state.sh` – to start or stop instances in a resource group <br>
     Ex- ./change_state.sh resource_group_name start/stop [optional args name of instances, space separated, to leave unaffected by the script]
-2. `getCCOId.sh` - It gets the current number of nodes present in the cluster.
+2. `getCCOId.sh` - It gets the current number of nodes present in the cluster. <br>
     EX- ./getCCOId.sh prefix(defined in input.auto.tfvars)
+    
+## Authentication-options
+- For logging into the azure cloud two options are there:
+  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file 
+  * The other option is to authenticate via azure CLI. Run the following command and then follow along to get signed in <br>
+    az login
+    
 ## Topology
 ![Image of Cluster Topology](cluster-topology.jpg)
 
 ## Input File `input.auto.tfvars`
 
-// logging credentials
+// logging credentials, use logging credentials if want to login using service principle
 
 // **`tenant_id`**                       = ""
 
@@ -90,7 +98,6 @@ There are two components involved.
 - Creates a security group for ubuntu to allow end users access to it possible through ssh.
 - Creates ubuntu - `test_ubuntu` - used kind of jumpBox to run `cluster.py` script
 - 1 Public IP - for `test_ubuntu`'s client-side
-- Role - `citrix_adc_cluster_role`
 - 3 NICs for each CitrixADC - `management`, `server`, `client`
 - 3 NICs for test_ubuntu - `ubuntu_client`, `ubuntu_management`, `ubuntu_server`
 > Terraform copies `cluster.py` to `test_ubuntu` (acts as jumpBox) and executes it remotely, by passing required arguments.
