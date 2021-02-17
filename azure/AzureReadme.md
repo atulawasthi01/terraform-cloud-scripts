@@ -3,6 +3,7 @@
 - [Folder Structure](#folder-structure)
   * [Terraform related files](#terraform-related-files)
   * [Python script related files](#python-script-related-files)
+  * [Shell script related files](#shell-script-related-files)
 - [Topology](#topology)
 - [Authentication options](#Authentication-options)
 - [Input File `input.auto.tfvars`](#input-file-inputautotfvars)
