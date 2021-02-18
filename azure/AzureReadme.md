@@ -34,7 +34,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 ### Shell script related files
 1. `get_num_nodes.sh` - It gets the current number of nodes present in the cluster. <br>
-    EX- ./get_num_nodes.sh prefix(defined in input.auto.tfvars)
+    Ex- ./get_num_nodes.sh prefix(defined in input.auto.tfvars)
     
 ## Authentication options
 - For logging into the azure cloud two options have been provided in the script:
