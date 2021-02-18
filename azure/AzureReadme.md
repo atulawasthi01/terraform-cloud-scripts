@@ -123,7 +123,7 @@ There are two components involved.
 ## Procedure to run the cluster bringup script
 1. For authentication use one of the methods-
    - Azure CLI - run az login command in the terminal and then follow along to log into azure
-   - Service Principle - To use this method for authentication
+   - Service Principle - To use this method for authentication follow the following steps - 
      * Create a service principle in azure and get the following values from there - tenant_id, subscription_id, client_id and client_secret.
      * Paste these values in the respective variables in input.auto.tfvars file uncommenting them.
      * Uncomment the above variables in variables.tf file as well.
