@@ -38,7 +38,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
     
 ## Authentication options
 - For logging into the azure cloud two options have been provided in the script:
-  * The easy way is to authenticate via azure CLI. Run the following command and then follow along to sign into azure: <br>
+  * The first method is to authenticate via azure CLI. Run the following command and then follow along to sign into azure: <br>
     az login
     Once logged in, terraform can deploy resources using that account.
   * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file.
