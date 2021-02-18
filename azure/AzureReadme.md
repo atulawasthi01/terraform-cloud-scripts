@@ -12,6 +12,7 @@
   * [Role of Terraform tool](#role-of-terraform-tool)
   * [Role of `cluster.py` script](#role-of-clusterpy-script)
   * [Role of `get_num_nodes.sh` script](#role-of-get_num_nodessh-script)
+- [Procedure to run the cluster bringup script](#procedure-to-run-the-cluster-bringup-script)
 
 The below documentation provides an overview on the provisioning of Citrix ADC clustering using Terraform tool
 
@@ -118,3 +119,18 @@ There are two components involved.
 - To run the script - <br> 
  ./get_num_nodes.sh prefix
 - Here prefix is the variable defined in input.auto.tfvars file.
+
+## Procedure to run the cluster bringup script
+1. For authentication use one of the methods-
+   - Azure CLI - run az login command in the terminal and then follow along to log into azure
+   - Service Principle - To use this method for authentication
+     * Create a service principle in azure and get the following values from there - tenant_id, subscription_id, client_id and client_secret.
+     * Paste these values in the respective variables in input.auto.tfvars file uncommenting those variables.
+     * Uncomment these variables in variables in variables.tf file as well.
+     * In main.tf file uncomment the azurerm block with these variables and comment the empty one.
+2. When running terraform first time in a directory, initialize terraform using the following command - 
+  - terraform init
+3. For every run use the following commands -
+  - terraform plan
+  - terraform apply
+4. teraform plan shows the changes that the tool will make and terraform apply commits those changes.
