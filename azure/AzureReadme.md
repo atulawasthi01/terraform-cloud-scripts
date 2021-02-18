@@ -64,7 +64,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 
 **`location`**                        = "West US 2"
 
-**`vpc_cidr_block`**                  = "10.0.0.0/16"
+**`vpc_address_space`**                  = "10.0.0.0/16"
 
 **`management_subnet_address_space`**    = "10.0.1.0/24"
 
