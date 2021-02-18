@@ -33,8 +33,8 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
 1. `cluster.py` - used to create and manage cluster. This file will be internally called by Terraform
 
 ### Shell script related files
-1. `getCCOId.sh` - It gets the current number of nodes present in the cluster. <br>
-    EX- ./getCCOId.sh prefix(defined in input.auto.tfvars)
+1. `get_num_nodes.sh` - It gets the current number of nodes present in the cluster. <br>
+    EX- ./get_num_nodes.sh prefix(defined in input.auto.tfvars)
     
 ## Authentication options
 - For logging into the azure cloud two options have been provided in the script:
