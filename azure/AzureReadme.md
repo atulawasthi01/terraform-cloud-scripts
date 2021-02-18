@@ -125,12 +125,12 @@ There are two components involved.
    - Azure CLI - run az login command in the terminal and then follow along to log into azure
    - Service Principle - To use this method for authentication
      * Create a service principle in azure and get the following values from there - tenant_id, subscription_id, client_id and client_secret.
-     * Paste these values in the respective variables in input.auto.tfvars file uncommenting those variables.
-     * Uncomment these variables in variables in variables.tf file as well.
+     * Paste these values in the respective variables in input.auto.tfvars file uncommenting them.
+     * Uncomment the above variables in variables.tf file as well.
      * In main.tf file uncomment the azurerm block with these variables and comment the empty one.
 2. When running terraform first time in a directory, initialize terraform using the following command - 
   - terraform init
 3. For every run use the following commands -
   - terraform plan
   - terraform apply
-4. teraform plan shows the changes that the tool will make and terraform apply commits those changes.
+4. teraform plan shows the changes that the terraform tool will make and terraform apply commits those changes.
