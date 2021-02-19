@@ -41,7 +41,7 @@ The below documentation provides an overview on the provisioning of Citrix ADC c
   * The first method is to authenticate via Azure CLI. Run the following command and then follow along to sign into azure: <br>
     az login<br>
     Once logged in, terraform can deploy resources using that account.
-  * If role permits, one can create a service principle and provide the logging credentials info in the input.auto.tfvars file.
+  * If role permits, one can create a service principle and provide the certain credentials info in the input.auto.tfvars file.
     
 ## Topology
 ![Image of Cluster Topology](cluster-topology2.png)
