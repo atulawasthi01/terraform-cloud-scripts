@@ -134,3 +134,7 @@ There are two components involved.
   - terraform plan
   - terraform apply
 4. teraform plan shows the changes that the terraform tool will make and terraform apply commits those changes.
+5. To log into the ubuntu VM -
+  - ssh -i <path_to_private_key> azureuser@<public_ip>
+6. To log into citrix adc node - 
+  - ssh nsroot@<management_ip>
